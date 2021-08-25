@@ -6,7 +6,7 @@
 /*   By:  <kricky@student.21-school.ru>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/19 23:27:39 by                   #+#    #+#             */
-/*   Updated: 2021/08/21 18:30:19 by                  ###   ########.fr       */
+/*   Updated: 2021/08/25 21:58:00 by                  ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,15 +35,12 @@ int	main(int argc, char **argv)
 		ft_error_silence();
 	stacks = malloc(sizeof(t_collection));
 	ft_initialize(stacks);
-	if (ft_validation(argc, argv))
+	if (ft_validation(argc, argv, stacks))
 	{
 		ft_fill_stack(argc, argv, stacks);
 		if (!ft_is_sorted(stacks->a))
-		{
 			ft_sort(stacks);
-			//ft_print_stack(stacks, 'a');
-			ft_clear_stacks(stacks, 0);
-		}
+		ft_clear_stacks(stacks, 0);
 	}
 	free(stacks);
 }

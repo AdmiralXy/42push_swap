@@ -6,7 +6,7 @@
 /*   By:  <kricky@student.21-school.ru>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/19 23:27:39 by                   #+#    #+#             */
-/*   Updated: 2021/08/22 22:55:06 by                  ###   ########.fr       */
+/*   Updated: 2021/08/25 22:00:05 by                  ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	ft_whitespaces(const char *str)
 	i = 0;
 	while (str[i] != '\0')
 	{
-		if (str[i] == '\n' || str[i] == '\t' || str[i] == ' ' || str[i] == '\f')
+		if (str[i] == '\n' || str[i] == '\t' || str[i] == ' ')
 			i++;
 		else
 			return (0);
@@ -27,7 +27,7 @@ int	ft_whitespaces(const char *str)
 	return (1);
 }
 
-void	ft_digit_exists(char *str)
+void	ft_digit_exists(char *str, t_collection *stacks)
 {
 	int	i;
 
@@ -38,10 +38,10 @@ void	ft_digit_exists(char *str)
 			return ;
 		i++;
 	}
-	ft_error();
+	ft_clear_stacks(stacks, 1);
 }
 
-void	ft_valid_str(const char *str)
+void	ft_valid_str(const char *str, t_collection *stacks)
 {
 	int		i;
 	int		nbr;
@@ -57,7 +57,7 @@ void	ft_valid_str(const char *str)
 		else if (str[i] == ' ' || str[i] == '\t')
 		{
 			if (sign != 0 && nbr == 0)
-				ft_error();
+				ft_clear_stacks(stacks, 1);
 			nbr = 0;
 			sign = 0;
 		}
@@ -65,7 +65,7 @@ void	ft_valid_str(const char *str)
 			&& sign == 0 && nbr == 0)
 			sign++;
 		else
-			ft_error();
+			ft_clear_stacks(stacks, 1);
 		i++;
 	}
 }
@@ -85,7 +85,7 @@ int	ft_is_sorted(t_stack *a)
 	return (1);
 }
 
-int	ft_validation(int argc, char **argv)
+int	ft_validation(int argc, char **argv, t_collection *stacks)
 {
 	int	i;
 	int	checked;
@@ -96,8 +96,8 @@ int	ft_validation(int argc, char **argv)
 	{
 		if (!ft_whitespaces(argv[i]))
 		{
-			ft_digit_exists(argv[i]);
-			ft_valid_str(argv[i]);
+			ft_digit_exists(argv[i], stacks);
+			ft_valid_str(argv[i], stacks);
 			checked = 1;
 		}
 		i++;

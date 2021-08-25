@@ -6,7 +6,7 @@
 /*   By:  <kricky@student.21-school.ru>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/19 23:27:39 by                   #+#    #+#             */
-/*   Updated: 2021/08/25 19:12:41 by                  ###   ########.fr       */
+/*   Updated: 2021/08/25 22:04:35 by                  ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	ft_run_ra_rra(t_collection *stacks, char direction, int offset)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (i < offset)
@@ -51,7 +51,7 @@ void	ft_run_ra_rra_actions(t_collection *stacks, t_actions *actions)
 	ft_pa(stacks, 1);
 }
 
-int		ft_smaller_element_index(t_stack *stack)
+int	ft_smaller_element_index(t_stack *stack)
 {
 	int		i;
 	int		index;
@@ -93,11 +93,12 @@ void	ft_optimized_move(t_collection *stacks, t_actions *actions)
 
 void	ft_selection_sort(t_collection *stacks)
 {
-	int	smaller_index;
-	t_actions *actions;
+	int			smaller_index;
+	t_actions	*actions;
 
-	if (!(actions = malloc(sizeof(t_actions))))
-		exit(1);
+	actions = malloc(sizeof(t_actions));
+	if (!actions)
+		ft_clear_stacks(stacks, 0);
 	while (stacks->counter_b != 0)
 	{
 		ft_setup_stack_properties(stacks->a, stacks->counter_a);

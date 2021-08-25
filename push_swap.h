@@ -6,7 +6,7 @@
 /*   By:  <kricky@student.21-school.ru>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/19 23:27:39 by                   #+#    #+#             */
-/*   Updated: 2021/08/25 21:55:44 by                  ###   ########.fr       */
+/*   Updated: 2021/08/25 22:07:34 by                  ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ typedef struct s_collection
 	int				counter_b;
 }					t_collection;
 
-typedef struct		s_actions
+typedef struct s_actions
 {
 	int				direction_a;
 	int				direction_b;
@@ -58,7 +58,7 @@ void	ft_sort_large(t_collection *stacks);
 void	ft_set_min_max(t_collection *stacks);
 void	ft_setup_stack_properties(t_stack *stack, int n);
 void	ft_selection_sort(t_collection *stacks);
-int		ft_best_distance(t_collection *stacks, t_actions *actions, int best_distance);
+int		ft_best_distance(t_collection *stacks, t_actions *actions, int dst);
 
 // Initialization functions
 void	ft_initialize(t_collection *stacks);

@@ -54,12 +54,12 @@ int	ft_best_offset(t_collection *stacks)
 	return (offset);
 }
 
-int	ft_best_distance(t_collection *stacks, t_actions *actions, int best_distance)
+int	ft_best_distance(t_collection *stacks, t_actions *actions, int distance)
 {
 	int	offset;
 
 	offset = ft_best_offset(stacks);
-	if (best_distance == -1 || (offset + stacks->b->index) < best_distance)
+	if (distance == -1 || (offset + stacks->b->index) < distance)
 	{
 		actions->direction_a = stacks->a->direction;
 		actions->direction_b = stacks->b->direction;
@@ -67,5 +67,5 @@ int	ft_best_distance(t_collection *stacks, t_actions *actions, int best_distance
 		actions->offset_b = stacks->b->index;
 		return (offset + stacks->b->index);
 	}
-	return (best_distance);
+	return (distance);
 }

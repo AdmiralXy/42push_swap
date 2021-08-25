@@ -84,7 +84,7 @@ void	ft_fill_stack(int argc, char **argv, t_collection *stacks)
 	i = 0;
 	while (i < argc - 1)
 	{
-		array[i] = ft_atoi_overflow(argv[i + 1]);
+		array[i] = ft_atoi_overflow(argv[i + 1], stacks);
 		i++;
 	}
 	stacks->counter_a = i;

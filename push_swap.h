@@ -6,7 +6,7 @@
 /*   By:  <kricky@student.21-school.ru>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/19 23:27:39 by                   #+#    #+#             */
-/*   Updated: 2021/08/25 22:07:34 by                  ###   ########.fr       */
+/*   Updated: 2021/08/25 22:07:38 by                  ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ int		ft_is_sorted(t_stack *a);
 
 // Utilities functions
 void	ft_print_stack(const t_collection *stacks, char array);
-int		ft_atoi_overflow(const char *str);
+int		ft_atoi_overflow(const char *str, t_collection *stacks);
 
 // Clear functions
 void	ft_clear_stacks(t_collection *stacks, int throw_exception);

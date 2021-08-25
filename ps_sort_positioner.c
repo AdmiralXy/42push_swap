@@ -6,7 +6,7 @@
 /*   By:  <kricky@student.21-school.ru>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/19 23:27:39 by                   #+#    #+#             */
-/*   Updated: 2021/08/25 19:00:28 by                  ###   ########.fr       */
+/*   Updated: 2021/08/25 22:22:56 by                  ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,15 +57,17 @@ int	ft_best_offset(t_collection *stacks)
 int	ft_best_distance(t_collection *stacks, t_actions *actions, int distance)
 {
 	int	offset;
+	int total_offset;
 
 	offset = ft_best_offset(stacks);
-	if (distance == -1 || (offset + stacks->b->index) < distance)
+	total_offset = offset + stacks->b->index;
+	if (distance == -1 || total_offset < distance)
 	{
 		actions->direction_a = stacks->a->direction;
 		actions->direction_b = stacks->b->direction;
 		actions->offset_a = offset;
 		actions->offset_b = stacks->b->index;
-		return (offset + stacks->b->index);
+		return (total_offset);
 	}
 	return (distance);
 }

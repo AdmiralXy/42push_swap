@@ -36,8 +36,8 @@ void	ft_reverse_rotate(t_stack **stack)
 {
 	t_stack		*stack_ptr;
 	t_stack		*first_node;
-	t_stack		*rotate_node;
 	t_stack		*second_to_last_node;
+	t_stack		*last_node;
 
 	stack_ptr = *stack;
 	if (stack_ptr == NULL || stack_ptr->next == NULL)
@@ -46,10 +46,10 @@ void	ft_reverse_rotate(t_stack **stack)
 	second_to_last_node = stack_ptr;
 	while (second_to_last_node->next->next != NULL)
 		second_to_last_node = second_to_last_node->next;
-	rotate_node = second_to_last_node->next;
+	last_node = second_to_last_node->next;
 	second_to_last_node->next = NULL;
-	rotate_node->next = first_node;
-	*stack = rotate_node;
+	last_node->next = first_node;
+	*stack = last_node;
 }
 
 void	ft_swap_top(t_stack *stack)

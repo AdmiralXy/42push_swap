@@ -6,15 +6,15 @@
 /*   By:  <kricky@student.21-school.ru>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/19 23:27:39 by                   #+#    #+#             */
-/*   Updated: 2021/08/20 01:29:28 by                  ###   ########.fr       */
+/*   Updated: 2021/08/22 22:55:06 by                  ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int		ft_whitespaces(char *str)
+int	ft_whitespaces(const char *str)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (str[i] != '\0')
@@ -29,7 +29,7 @@ int		ft_whitespaces(char *str)
 
 void	ft_digit_exists(char *str)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (str[i] != '\0')
@@ -61,8 +61,8 @@ void	ft_valid_str(const char *str)
 			nbr = 0;
 			sign = 0;
 		}
-		else if (((str[i] == '+' || str[i] == '-') &&
-		(sign == 0 && nbr == 0)) && (str[i + 1] != '\0'))
+		else if (str[i + 1] != '\0' && (str[i] == '+' || str[i] == '-')
+			&& sign == 0 && nbr == 0)
 			sign++;
 		else
 			ft_error();
@@ -70,7 +70,7 @@ void	ft_valid_str(const char *str)
 	}
 }
 
-int		ft_is_sorted(t_stack *a)
+int	ft_is_sorted(t_stack *a)
 {
 	int	tmp;
 
@@ -87,10 +87,10 @@ int		ft_is_sorted(t_stack *a)
 
 int	ft_validation(int argc, char **argv)
 {
-	int i;
-	int ret;
+	int	i;
+	int	checked;
 
-	ret = 0;
+	checked = 0;
 	i = 1;
 	while (i < argc)
 	{
@@ -98,9 +98,9 @@ int	ft_validation(int argc, char **argv)
 		{
 			ft_digit_exists(argv[i]);
 			ft_valid_str(argv[i]);
-			ret = 1;
+			checked = 1;
 		}
 		i++;
 	}
-	return (ret);
+	return (checked);
 }

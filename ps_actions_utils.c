@@ -6,7 +6,7 @@
 /*   By:  <kricky@student.21-school.ru>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/19 23:27:39 by                   #+#    #+#             */
-/*   Updated: 2021/08/20 00:29:48 by                  ###   ########.fr       */
+/*   Updated: 2021/08/22 22:50:22 by                  ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,8 +71,8 @@ void	ft_send_top(t_collection *stacks, const char destination)
 	{
 		if (stacks->b == NULL)
 			return ;
-		stacks->counter_a += 1;
-		stacks->counter_b -= 1;
+		stacks->counter_a++;
+		stacks->counter_b--;
 		tmp = stacks->b;
 		stacks->b = stacks->b->next;
 		tmp->next = stacks->a;
@@ -82,8 +82,8 @@ void	ft_send_top(t_collection *stacks, const char destination)
 	{
 		if (stacks->a == NULL)
 			return ;
-		stacks->counter_a -= 1;
-		stacks->counter_b += 1;
+		stacks->counter_a--;
+		stacks->counter_b++;
 		tmp = stacks->a;
 		stacks->a = stacks->a->next;
 		tmp->next = stacks->b;

@@ -6,7 +6,7 @@
 /*   By:  <kricky@student.21-school.ru>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/19 23:27:39 by                   #+#    #+#             */
-/*   Updated: 2021/08/21 18:19:34 by                  ###   ########.fr       */
+/*   Updated: 2021/08/25 19:01:41 by                  ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,29 +21,28 @@
 typedef struct s_stack
 {
 	int				value;
-	int				step;
-	int				rotate;
 	struct s_stack	*next;
+	int				index;
+	int				direction;
 }					t_stack;
 
 typedef struct s_collection
 {
 	t_stack			*a;
 	t_stack			*b;
-	int				counter_a;
-	int				counter_b;
 	int				min;
 	int				max;
-	int				mid;
+	int				counter_a;
+	int				counter_b;
 }					t_collection;
 
-typedef struct s_actions
+typedef struct		s_actions
 {
-	int	counter_a;
-	int	counter_b;
-	int	destination_a;
-	int	destination_b;
-}		t_actions;
+	int				direction_a;
+	int				direction_b;
+	int				offset_a;
+	int				offset_b;
+}					t_actions;
 
 // Throw an error functions
 void	ft_error(void);
@@ -57,7 +56,9 @@ void	ft_sort_large(t_collection *stacks);
 
 // Sorting utils
 void	ft_set_min_max(t_collection *stacks);
-void	ft_move_to_b(t_collection *stacks);
+void	ft_setup_stack_properties(t_stack *stack, int n);
+void	ft_selection_sort(t_collection *stacks);
+int		ft_best_distance(t_collection *stacks, t_actions *actions, int best_distance);
 
 // Initialization functions
 void	ft_initialize(t_collection *stacks);

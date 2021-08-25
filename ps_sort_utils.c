@@ -36,3 +36,25 @@ void	ft_set_min_max(t_collection *stacks)
 		b_ptr = b_ptr->next;
 	}
 }
+
+void	ft_setup_stack_properties(t_stack *stack, int n)
+{
+	int		i;
+
+	i = 0;
+	while (i < n)
+	{
+		if (i <= n / 2)
+		{
+			stack->index = i;
+			stack->direction = 1;
+		}
+		else
+		{
+			stack->index = n - i;
+			stack->direction = -1;
+		}
+		stack = stack->next;
+		i++;
+	}
+}

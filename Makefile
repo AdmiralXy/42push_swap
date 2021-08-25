@@ -7,8 +7,8 @@ NAME = push_swap
 SRCS = push_swap.c \
 	ps_sort_utils.c \
 	ps_sort.c \
-	ps_sort_large.c \
 	ps_sort_large_utils.c \
+	ps_sort_positioner.c \
 	ps_utils.c \
 	ps_initialize.c \
 	ps_throw.c \

@@ -6,7 +6,7 @@
 /*   By:  <kricky@student.21-school.ru>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/19 23:27:39 by                   #+#    #+#             */
-/*   Updated: 2021/08/20 19:54:37 by                  ###   ########.fr       */
+/*   Updated: 2021/08/24 21:58:31 by                  ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,12 @@
 
 void	ft_initialize(t_collection *stacks)
 {
+	stacks->a = NULL;
+	stacks->b = NULL;
 	stacks->counter_a = 0;
 	stacks->counter_b = 0;
 	stacks->min = 2147483647;
 	stacks->max = -2147483648;
-	stacks->mid = 0;
-	stacks->a = NULL;
-	stacks->b = NULL;
 }
 
 t_stack	*ft_array_to_stack(const int *array, int argc)

@@ -6,7 +6,7 @@
 /*   By:  <kricky@student.21-school.ru>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/19 23:27:39 by                   #+#    #+#             */
-/*   Updated: 2021/08/25 22:19:34 by                  ###   ########.fr       */
+/*   Updated: 2021/08/31 01:18:34 by                  ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,4 +48,43 @@ void	ft_print_stack(const t_collection *stacks, const char array)
 	ft_putstr_fd("\n", 1);
 	ft_putstr_fd("------------------------------"
 		"-------------------------------------\n\n\n", 1);
+}
+
+void	ft_clear_stacks(t_collection *stacks, int throw_exception)
+{
+	int		iterator;
+	t_stack	*tmp;
+
+	iterator = 0;
+	while (iterator < stacks->counter_a)
+	{
+		tmp = stacks->a;
+		stacks->a = stacks->a->next;
+		free(tmp);
+		iterator++;
+	}
+	iterator = 0;
+	while (iterator < stacks->counter_b)
+	{
+		tmp = stacks->b;
+		stacks->b = stacks->b->next;
+		free(tmp);
+		iterator++;
+	}
+	if (throw_exception)
+	{
+		free(stacks);
+		ft_error();
+	}
+}
+
+void	ft_error(void)
+{
+	ft_putendl_fd("Error", 1);
+	exit(EXIT_FAILURE);
+}
+
+void	ft_error_silence(void)
+{
+	exit(EXIT_FAILURE);
 }

@@ -91,7 +91,5 @@ void	ft_fill_stack(int argc, char **argv, t_collection *stacks)
 	stacks->a = ft_array_to_stack(array, argc);
 	free(array);
 	if (!ft_unique_elements(stacks->a))
-	{
 		ft_clear_stacks(stacks, 1);
-	}
 }

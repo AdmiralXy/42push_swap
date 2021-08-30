@@ -6,13 +6,13 @@
 /*   By:  <kricky@student.21-school.ru>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/19 23:27:39 by                   #+#    #+#             */
-/*   Updated: 2021/08/31 00:44:02 by                  ###   ########.fr       */
+/*   Updated: 2021/08/31 01:30:18 by                  ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	ft_better_element(t_stack *stack, int higher, int b_value)
+int	ft_minimum_max(t_stack *stack, int higher, int b_value)
 {
 	int	offset;
 
@@ -27,7 +27,7 @@ int	ft_better_element(t_stack *stack, int higher, int b_value)
 	return (-1);
 }
 
-int	ft_best_offset(t_collection *stacks)
+int	ft_get_offset(t_collection *stacks)
 {
 	int	higher;
 	int	offset;
@@ -46,7 +46,7 @@ int	ft_best_offset(t_collection *stacks)
 		else
 			break ;
 	}
-	better_solution = ft_better_element(stacks->a, higher, stacks->b->value);
+	better_solution = ft_minimum_max(stacks->a, higher, stacks->b->value);
 	if (better_solution != -1)
 		offset = better_solution;
 	if (stacks->a->direction == -1)
@@ -57,9 +57,9 @@ int	ft_best_offset(t_collection *stacks)
 int	ft_best_distance(t_collection *stacks, t_actions *actions, int distance)
 {
 	int	offset;
-	int total_offset;
+	int	total_offset;
 
-	offset = ft_best_offset(stacks);
+	offset = ft_get_offset(stacks);
 	total_offset = offset + stacks->b->index;
 	if (distance == -1 || total_offset < distance)
 	{

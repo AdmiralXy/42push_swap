@@ -6,7 +6,7 @@
 /*   By:  <kricky@student.21-school.ru>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/19 23:27:39 by                   #+#    #+#             */
-/*   Updated: 2021/08/24 22:04:13 by                  ###   ########.fr       */
+/*   Updated: 2021/08/31 01:23:12 by                  ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,13 +54,9 @@ void	ft_sort_middle(t_collection *stacks)
 		ft_sort_small(stacks);
 	ft_pa(stacks, 1);
 	ft_pa(stacks, 1);
-	if (stacks->a->value == stacks->max)
-		ft_ra(stacks, 1);
-	else
-	{
+	if (stacks->a->value != stacks->max)
 		ft_sa(stacks, 1);
-		ft_ra(stacks, 1);
-	}
+	ft_ra(stacks, 1);
 }
 
 void	ft_sort_large(t_collection *stacks)
@@ -72,8 +68,7 @@ void	ft_sort_large(t_collection *stacks)
 		else
 			ft_ra(stacks, 1);
 	}
-	if (stacks->a->value < stacks->a->next->value)
+	if (stacks->a->value != stacks->max)
 		ft_sa(stacks, 1);
-	ft_pa(stacks, 1);
 	ft_selection_sort(stacks);
 }

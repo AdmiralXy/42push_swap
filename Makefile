@@ -11,10 +11,8 @@ SRCS = push_swap.c \
 	ps_sort_positioner.c \
 	ps_utils.c \
 	ps_initialize.c \
-	ps_throw.c \
 	ps_validate.c \
 	ps_atoi_overflow.c \
-	ps_clear_stacks.c \
 	ps_actions_utils.c \
 	ps_actions_first.c \
 	ps_actions_second.c \

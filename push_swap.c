@@ -6,7 +6,7 @@
 /*   By:  <kricky@student.21-school.ru>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/19 23:27:39 by                   #+#    #+#             */
-/*   Updated: 2021/08/25 21:58:00 by                  ###   ########.fr       */
+/*   Updated: 2021/08/31 01:16:41 by                  ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 // TODO valid_str refactor
 // TODO middle sort refactor
-// TODO leaks with/without error
+// TODO check leaks with/without error
 
 void	ft_sort(t_collection *stacks)
 {

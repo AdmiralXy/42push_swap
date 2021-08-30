@@ -6,47 +6,47 @@
 /*   By:  <kricky@student.21-school.ru>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/19 23:27:39 by                   #+#    #+#             */
-/*   Updated: 2021/08/25 22:22:56 by                  ###   ########.fr       */
+/*   Updated: 2021/08/31 00:44:02 by                  ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	ft_better_solution(t_stack *stack, int smallest, int src)
+int	ft_better_element(t_stack *stack, int higher, int b_value)
 {
-	int	i;
+	int	offset;
 
-	i = 0;
+	offset = 0;
 	while (stack)
 	{
-		if (stack->value < smallest && stack->value > src)
-			return (i);
+		if (stack->value < higher && stack->value > b_value)
+			return (offset);
 		stack = stack->next;
-		i++;
+		offset++;
 	}
 	return (-1);
 }
 
 int	ft_best_offset(t_collection *stacks)
 {
-	int	smallest;
+	int	higher;
 	int	offset;
 	int	better_solution;
 
-	smallest = 0;
+	higher = 0;
 	offset = 0;
 	while (stacks->a)
 	{
-		smallest = stacks->a->value;
-		if (stacks->b->value > stacks->a->value)
+		higher = stacks->a->value;
+		if (stacks->b->value > higher)
 		{
-			offset += 1;
+			offset++;
 			stacks->a = stacks->a->next;
 		}
 		else
 			break ;
 	}
-	better_solution = ft_better_solution(stacks->a, smallest, stacks->b->value);
+	better_solution = ft_better_element(stacks->a, higher, stacks->b->value);
 	if (better_solution != -1)
 		offset = better_solution;
 	if (stacks->a->direction == -1)

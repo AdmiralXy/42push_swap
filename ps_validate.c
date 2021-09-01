@@ -41,30 +41,16 @@ void	ft_digit_exists(char *str, t_collection *stacks)
 	ft_clear_stacks(stacks, 1);
 }
 
-void	ft_valid_str(const char *str, t_collection *stacks)
+void	ft_validate_number(const char *str, t_collection *stacks)
 {
-	int		i;
-	int		nbr;
-	int		sign;
+	int	i;
 
 	i = 0;
-	nbr = 0;
-	sign = 0;
+	while (str[i] != '\0' && (str[i] == '\n' || str[i] == '\t' || str[i] == ' '))
+		i++;
 	while (str[i] != '\0')
 	{
-		if (str[i] >= '0' && str[i] <= '9')
-			nbr++;
-		else if (str[i] == ' ' || str[i] == '\t')
-		{
-			if (sign != 0 && nbr == 0)
-				ft_clear_stacks(stacks, 1);
-			nbr = 0;
-			sign = 0;
-		}
-		else if (str[i + 1] != '\0' && (str[i] == '+' || str[i] == '-')
-			&& sign == 0 && nbr == 0)
-			sign++;
-		else
+		if (!ft_isdigit(str[i]))
 			ft_clear_stacks(stacks, 1);
 		i++;
 	}
@@ -97,7 +83,7 @@ int	ft_validation(int argc, char **argv, t_collection *stacks)
 		if (!ft_whitespaces(argv[i]))
 		{
 			ft_digit_exists(argv[i], stacks);
-			ft_valid_str(argv[i], stacks);
+			ft_validate_number(argv[i], stacks);
 			checked = 1;
 		}
 		i++;

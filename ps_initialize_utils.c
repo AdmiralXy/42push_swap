@@ -1,44 +1,42 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*   ps_initialize_utils.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kricky <kricky@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/19 23:27:39 by                   #+#    #+#             */
-/*   Updated: 2021/09/01 13:51:16 by kricky           ###   ########.fr       */
+/*   Updated: 2021/09/01 13:37:13 by kricky           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	ft_sort(t_collection *stacks)
+int	ft_count_args(int argc, char **argv)
 {
-	ft_set_min_max(stacks);
-	if (stacks->counter_a <= 3)
-		ft_sort_small(stacks);
-	else if (stacks->counter_a <= 5)
-		ft_sort_middle(stacks);
-	else
-		ft_sort_large(stacks);
+	int	i;
+	int	result;
+
+	i = 1;
+	result = 0;
+	while (i < argc)
+	{
+		result += ft_wdcounter(argv[i], ' ');
+		i++;
+	}
+	return (result);
 }
 
-int	main(int argc, char **argv)
+char	**ft_clear_strs(char **strs)
 {
-	t_collection	*stacks;
+	int	i;
 
-	if (argc < 2)
-		ft_error_silence();
-	stacks = malloc(sizeof(t_collection));
-	if (!stacks)
-		ft_error_silence();
-	ft_initialize(stacks);
-	if (ft_validation(argc, argv, stacks))
+	i = 0;
+	while (strs[i])
 	{
-		ft_fill_stack(argc, argv, stacks);
-		if (!ft_is_sorted(stacks->a))
-			ft_sort(stacks);
-		ft_clear_stacks(stacks, 0);
+		free(strs[i]);
+		i++;
 	}
-	free(stacks);
+	free(strs);
+	return (0);
 }

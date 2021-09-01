@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ps_validate.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By:  <kricky@student.21-school.ru>             +#+  +:+       +#+        */
+/*   By: kricky <kricky@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/19 23:27:39 by                   #+#    #+#             */
-/*   Updated: 2021/08/25 22:00:05 by                  ###   ########.fr       */
+/*   Updated: 2021/09/01 13:38:21 by kricky           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,8 @@ void	ft_validate_number(const char *str, t_collection *stacks)
 	int	i;
 
 	i = 0;
-	while (str[i] != '\0' && (str[i] == '\n' || str[i] == '\t' || str[i] == ' '))
+	while (str[i] != '\0'
+		&& (str[i] == '\n' || str[i] == '\t' || str[i] == ' '))
 		i++;
 	if (str[i] != '\0' && (str[i] == '-' || str[i] == '+'))
 		i++;
@@ -75,19 +76,28 @@ int	ft_is_sorted(t_stack *a)
 
 int	ft_validation(int argc, char **argv, t_collection *stacks)
 {
-	int	i;
-	int	checked;
+	int		i;
+	int		j;
+	char	**tmp;
+	int		checked;
 
 	checked = 0;
 	i = 1;
 	while (i < argc)
 	{
-		if (!ft_whitespaces(argv[i]))
+		tmp = ft_split(argv[i], ' ');
+		j = 0;
+		while (tmp[j] != '\0')
 		{
-			ft_digit_exists(argv[i], stacks);
-			ft_validate_number(argv[i], stacks);
-			checked = 1;
+			if (!ft_whitespaces(tmp[j]))
+			{
+				ft_digit_exists(tmp[j], stacks);
+				ft_validate_number(tmp[j], stacks);
+				checked = 1;
+			}
+			j++;
 		}
+		tmp = ft_clear_strs(tmp);
 		i++;
 	}
 	return (checked);

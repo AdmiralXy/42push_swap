@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ps_initialize.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By:  <kricky@student.21-school.ru>             +#+  +:+       +#+        */
+/*   By: kricky <kricky@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/19 23:27:39 by                   #+#    #+#             */
-/*   Updated: 2021/08/24 21:58:31 by                  ###   ########.fr       */
+/*   Updated: 2021/09/01 13:58:46 by kricky           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,18 +77,28 @@ int	ft_unique_elements(t_stack *a)
 
 void	ft_fill_stack(int argc, char **argv, t_collection *stacks)
 {
-	int	i;
-	int	*array;
+	int		i;
+	int		j;
+	int		array_iter;
+	int		*array;
+	char	**tmp;
 
-	array = malloc(sizeof(int) * argc);
 	i = 0;
-	while (i < argc - 1)
+	array_iter = 0;
+	array = malloc(sizeof(int) * ft_count_args(argc, argv));
+	while (++i < argc)
 	{
-		array[i] = ft_atoi_overflow(argv[i + 1], stacks);
-		i++;
+		tmp = ft_split(argv[i], ' ');
+		j = -1;
+		while (tmp[++j] != '\0')
+		{
+			array[array_iter] = ft_atoi_overflow(tmp[j], stacks);
+			array_iter++;
+		}
+		tmp = ft_clear_strs(tmp);
 	}
-	stacks->counter_a = i;
-	stacks->a = ft_array_to_stack(array, argc);
+	stacks->counter_a = ft_count_args(argc, argv);
+	stacks->a = ft_array_to_stack(array, ft_count_args(argc, argv) + 1);
 	free(array);
 	if (!ft_unique_elements(stacks->a))
 		ft_clear_stacks(stacks, 1);

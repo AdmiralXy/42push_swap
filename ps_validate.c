@@ -48,6 +48,8 @@ void	ft_validate_number(const char *str, t_collection *stacks)
 	i = 0;
 	while (str[i] != '\0' && (str[i] == '\n' || str[i] == '\t' || str[i] == ' '))
 		i++;
+	if (str[i] != '\0' && (str[i] == '-' || str[i] == '+'))
+		i++;
 	while (str[i] != '\0')
 	{
 		if (!ft_isdigit(str[i]))

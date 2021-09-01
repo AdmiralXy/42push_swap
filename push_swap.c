@@ -12,10 +12,6 @@
 
 #include "push_swap.h"
 
-// TODO valid_str refactor
-// TODO middle sort refactor
-// TODO check leaks with/without error
-
 void	ft_sort(t_collection *stacks)
 {
 	ft_set_min_max(stacks);
